@@ -9,11 +9,35 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var myLabel: UILabel!
+    var isIOS = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        imageView.isUserInteractionEnabled = true
+        
+        let gestireRecog = UITapGestureRecognizer(target: self, action: #selector(changePic))
+        imageView.addGestureRecognizer(gestireRecog)
     }
 
+    @objc func changePic(){
+        
+        
+        
+        if(isIOS){
+            imageView.image = UIImage(named: "android")
+            myLabel.text = "Android"
+            isIOS = false
+        }else{
+            imageView.image = UIImage(named: "iOS")
+            myLabel.text = "iOS"
+            isIOS = true
+        }
+        
+        
+    }
 
 }
 
